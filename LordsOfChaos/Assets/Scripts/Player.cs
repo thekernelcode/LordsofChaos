@@ -2,11 +2,21 @@
 
 public class Player : Character
 {
+    [SerializeField]
+    private Stats health;
+
+    [SerializeField]
+    private Stats mana;
+
+    private float initHealth = 100;
+
+    private float initMana = 50;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-
+        health.Initialize(initHealth, initHealth);            // HARDCODED VALUES FOR NOW!
+        mana.Initialize(initMana, initMana);
     }
 
     // Update is called once per frame
@@ -37,6 +47,16 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.D))
         {
             direction += (Vector3.right);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            health.MyCurrentValue -= 10;
+            mana.MyCurrentValue -= 10;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            health.MyCurrentValue += 10;
+            mana.MyCurrentValue += 10;
         }
     }
 }

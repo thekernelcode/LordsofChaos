@@ -6,7 +6,7 @@ public abstract class Character : MonoBehaviour                 // Class is abst
                                                                 // it must have classes that derive from it.
 {
 
-    protected int health;
+    // protected int health;
     protected int movement;
     protected int constitution;
     protected int attack;
@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour                 // Class is abst
     protected Vector3 direction;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
 
     }
