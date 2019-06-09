@@ -2,6 +2,13 @@
 
 public class Player : Character
 {
+    // TEST CODE ONLY   //
+
+    public GameManager gmInstance;
+    public GameObject[] prefabs;
+
+    // END OF TEST CODE //
+
     [SerializeField]
     private Stats health;
 
@@ -58,5 +65,22 @@ public class Player : Character
             health.MyCurrentValue += 10;
             mana.MyCurrentValue += 10;
         }
+
+        // TEST CODE ONLY //
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            gmInstance.objectToInstantiate = prefabs[0];
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            gmInstance.objectToInstantiate = prefabs[1];
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            Instantiate(gmInstance.objectToInstantiate, new Vector3((Random.Range(-4, 8)), 0, (Random.Range(-4, 8))), Quaternion.identity);
+        }
+
+        // END OF TEST CODE //
     }
 }
