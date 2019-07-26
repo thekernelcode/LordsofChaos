@@ -68,15 +68,22 @@ public class Player : Character
 
         // TEST CODE ONLY //
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gmInstance.objectToInstantiate = prefabs[0];
+            UIManager.MyInstance.ShowSpellFrame(prefabs[0]); 
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gmInstance.objectToInstantiate = prefabs[1];
+            UIManager.MyInstance.ShowSpellFrame(prefabs[1]);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad0))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            gmInstance.objectToInstantiate = null;
+            UIManager.MyInstance.HideSpellFrame();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             Instantiate(gmInstance.objectToInstantiate, new Vector3((Random.Range(-4, 8)), 0, (Random.Range(-4, 8))), Quaternion.identity);
         }
