@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
     public void ShowSpellFrame(GameObject unitToCast)
     {
         spellFrame.SetActive(true);
+        Image selectedIcon = spellFrame.GetComponent<Image>();
+        selectedIcon.sprite = unitToCast.GetComponent<Image>().sprite;
     }
 
     public void HideSpellFrame()
