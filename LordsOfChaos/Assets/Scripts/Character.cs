@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour                 // Class is abstract as it cannot exist alone, 
                                                                 // it must have classes that derive from it.
 {
-
+    // THESE ARE ALL PART OF THE CHILD CLASS TOO //
     // protected int health;
     protected int movement;
     protected int constitution;
@@ -26,6 +26,7 @@ public abstract class Character : MonoBehaviour                 // Class is abst
         Move();
     }
 
+    // THIS IS PASSED ON TO CHILD OF CLASS //
     void Move()
     {
         {

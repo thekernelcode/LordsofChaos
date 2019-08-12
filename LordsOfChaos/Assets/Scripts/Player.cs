@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// CLASS INHERITS FROM PARENT ALSO, SO HAS ALL ITS PARENTS INFO TOO //
 public class Player : Character
 {
     // TEST CODE ONLY   //
@@ -66,6 +67,8 @@ public class Player : Character
             mana.MyCurrentValue += 10;
         }
 
+        // TO IMPLEMENT SELECTION OF SPELL FROM LIST OF AVAILABLE SPELLS //
+        // TO IMPLEMENT SELECTION OF SPELL FROM SPELL BOOK
         // TEST CODE ONLY //
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
