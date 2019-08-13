@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject objectToInstantiate;
+    public GameObject objectToAttack;
 
     // Start is called before the first frame update
     void Start()
