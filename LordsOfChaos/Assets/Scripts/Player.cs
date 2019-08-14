@@ -7,7 +7,7 @@ public class Player : Character
 
     public GameManager gmInstance;
     public GameObject[] prefabs;
-
+    
     // END OF TEST CODE //
 
     [SerializeField]
@@ -25,6 +25,8 @@ public class Player : Character
     {
         health.Initialize(initHealth, initHealth);            // HARDCODED VALUES FOR NOW!
         mana.Initialize(initMana, initMana);
+        attack = 6;
+        base.Start();
     }
 
     // Update is called once per frame
@@ -89,6 +91,10 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             Instantiate(gmInstance.objectToInstantiate, new Vector3((Random.Range(-4, 8)), 0, (Random.Range(-4, 8))), Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            base.Attack(gmInstance.objectToAttack);
         }
 
         // END OF TEST CODE //

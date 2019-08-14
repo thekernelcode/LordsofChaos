@@ -23,6 +23,7 @@ public class MouseClicker : MonoBehaviour
             {
                 Debug.Log(hit.transform.gameObject);
                 gm.objectToAttack = hit.transform.root.gameObject;
+                Debug.Log(gm.objectToAttack);
             }
         }
 

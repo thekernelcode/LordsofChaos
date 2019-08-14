@@ -14,10 +14,13 @@ public abstract class Character : MonoBehaviour                 // Class is abst
 
     protected Vector3 direction;
 
+    protected GameManager gmInst;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-
+        gmInst = FindObjectOfType<GameManager>();
+        Debug.Log("GM Inst Found = " + gmInst);
     }
 
     // Update is called once per frame
@@ -32,6 +35,16 @@ public abstract class Character : MonoBehaviour                 // Class is abst
         {
             transform.Translate(direction);
         }
+    }
+
+    protected void Attack(GameObject target)
+    {
+        target = gmInst.objectToAttack;
+        Debug.Log("Target = " + target);
+        Unit u = target.GetComponent<Unit>();
+        float damageDealt = attack - u.defence;
+        u.TakeDamage(damageDealt);
+        Debug.Log("Health remaining = " + u.health);
     }
 
 

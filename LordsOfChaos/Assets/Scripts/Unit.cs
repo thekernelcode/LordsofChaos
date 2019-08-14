@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public float movement;
     public float strength;
     public float health;
+    public float defence;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,23 @@ public class Unit : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.U))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health = health - damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
