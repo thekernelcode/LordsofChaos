@@ -23,7 +23,7 @@ public class Unit : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);  // THIS IS ACTIVE ON ALL UNITS SO DESTROYS ALL UNITS
         }
     }
 
