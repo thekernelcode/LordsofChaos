@@ -4,10 +4,15 @@
 public class Player : Character
 {
     // TEST CODE ONLY   //
+    // NOTE
+    // HACK
+    // FIXME
 
     public GameManager gmInstance;
+
+    // TODO - SEPARATE OUT OFF PLAYER SCRIPT
     public GameObject[] prefabs;
-    
+
     // END OF TEST CODE //
 
     [SerializeField]
@@ -76,7 +81,7 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gmInstance.objectToInstantiate = prefabs[0];
-            UIManager.MyInstance.ShowSpellFrame(prefabs[0]); 
+            UIManager.MyInstance.ShowSpellFrame(prefabs[0]);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
