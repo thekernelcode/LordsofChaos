@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour {
 
+    //TODO - TILE HOLDING DOESNT SEEM TO BE WORKING
 	//------------------//
 	// Hidden Variables //
 	//------------------//
@@ -319,27 +320,30 @@ public class GameLogic : MonoBehaviour {
 				}
 			}
 			//extend island until max tiles are reached
+            //MAPSIZE DEFAULTS TO 25, SO THIS IS GOING FROM 12 TO 22
 			while (tilesUsed < maxTiles) {
-				for (SY = (int)(size * 0.5f) ; SY < size-3 ; SY++) {
+				for (SY = (int)(size * 0.5f) ; SY < size-3 ; SY++) {  
 					for (SX = (int)(size * 0.5f) ; SX < size-3 ; SX++) {
 						RandomTile();
 					}
 				}
-				for (SY = (int)(size * 0.5f) ; SY < size-3 ; SY++) {
-					for (SX = (int)(size * 0.5f) ; SX > 3 ; SX--) {
-						RandomTile();
-					}
-				}
-				for (SY = (int)(size * 0.5f) ; SY > 3 ; SY--) {
-					for (SX = (int)(size * 0.5f) ; SX < size-3 ; SX++) {
-						RandomTile();
-					}
-				}
-				for (SY = (int)(size * 0.5f) ; SY > 3 ; SY--) {
-					for (SX = (int)(size * 0.5f) ; SX > 3 ; SX--) {
-						RandomTile();
-					}
-				}
+
+                //TODO - RE-IMPLEMENT RANDOM MAP GROWTH
+				//for (SY = (int)(size * 0.5f) ; SY < size-3 ; SY++) {
+				//	for (SX = (int)(size * 0.5f) ; SX > 3 ; SX--) {
+				//		RandomTile();
+				//	}
+				//}
+				//for (SY = (int)(size * 0.5f) ; SY > 3 ; SY--) {
+				//	for (SX = (int)(size * 0.5f) ; SX < size-3 ; SX++) {
+				//		RandomTile();
+				//	}
+				//}
+				//for (SY = (int)(size * 0.5f) ; SY > 3 ; SY--) {
+				//	for (SX = (int)(size * 0.5f) ; SX > 3 ; SX--) {
+				//		RandomTile();
+				//	}
+				//}
 			}
 			//delete unused tiles
 			for (SX = 0 ; SX < size ; SX++) {
@@ -765,13 +769,16 @@ public class GameLogic : MonoBehaviour {
 		enemyCreated = false;
 
 		//create at random location
-		while (!enemyCreated) {			
+		while (!enemyCreated) {		
+            
+            // ASSIGN RANDOM ENEMY POSITION
 			SX = Random.Range(1, size);
 			SY = Random.Range(1, size);
+
 			if (scriptArray[SX, SY].holding == 0) {
 				CalculateOffset(SX);
 				SetHold(SX, SY, 1);
-				newEnemy = Instantiate(enemyArray[randomNumber], new Vector3(SX * 1.5f , 0.75f, SY * 1.7324f + (2 * offset)), Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
+				newEnemy = Instantiate(enemyArray[randomNumber]/*PICK RANDOM ENEMY*/, new Vector3(SX * 1.5f , 0.75f, SY * 1.7324f + (2 * offset)), Quaternion.Euler(new Vector3(0, 180, 0))) as GameObject;
 				newEnemy.transform.parent = mapArray[SX, SY].transform;				
 				newShadow = Instantiate(shadowQuad, new Vector3(SX * 1.5f , 0.36f, SY * 1.7324f + (2 * offset)), Quaternion.Euler(new Vector3(270, 0, 0))) as GameObject;
 				newShadow.transform.localScale = new Vector3(0.6f, 0.5f, 0);
@@ -1099,23 +1106,24 @@ public class GameLogic : MonoBehaviour {
 			}
 		}
 		
+        //TODO - REMOVED RAIN SPLASH AND RIPPLES
 		//rain splashes and ripples
-		if (drizzle > 2) {
-			if (splashTime > 0.0f)
-				splashTime -= Time.deltaTime * drizzle;
-			else {
-				splashX = rainParticles.transform.position.x + Random.Range(-4.0f, 4.0f);
-				splashZ = rainParticles.transform.position.z + Random.Range(-4.0f, 4.0f);
-				if (Physics.Raycast(new Vector3(splashX, 4.0f, splashZ), -Vector3.up, out rayHit, 6.0f)) {
-					if (rayHit.transform.gameObject.tag == "Grass")
-						newItem = Instantiate(splashObject, new Vector3(splashX , 0.4f, splashZ), Quaternion.identity) as GameObject;
-					else
-						newItem = Instantiate(rippleObject, new Vector3(splashX , -0.1f, splashZ), Quaternion.identity) as GameObject;
-					newItem.transform.eulerAngles = -Vector3.left * 270;
-				}
-				splashTime = Random.Range(0.1f, 0.25f);
-			}
-		}
+		//if (drizzle > 2) {
+		//	if (splashTime > 0.0f)
+		//		splashTime -= Time.deltaTime * drizzle;
+		//	else {
+		//		splashX = rainParticles.transform.position.x + Random.Range(-4.0f, 4.0f);
+		//		splashZ = rainParticles.transform.position.z + Random.Range(-4.0f, 4.0f);
+		//		if (Physics.Raycast(new Vector3(splashX, 4.0f, splashZ), -Vector3.up, out rayHit, 6.0f)) {
+		//			if (rayHit.transform.gameObject.tag == "Grass")
+		//				newItem = Instantiate(splashObject, new Vector3(splashX , 0.4f, splashZ), Quaternion.identity) as GameObject;
+		//			else
+		//				newItem = Instantiate(rippleObject, new Vector3(splashX , -0.1f, splashZ), Quaternion.identity) as GameObject;
+		//			newItem.transform.eulerAngles = -Vector3.left * 270;
+		//		}
+		//		splashTime = Random.Range(0.1f, 0.25f);
+		//	}
+		//}
 		
 		//switch day/night
 		if (switchIn > 0.0f) {
@@ -1826,8 +1834,10 @@ public class GameLogic : MonoBehaviour {
 	//-------------//
 
 	void DeductFood () {
+
+        //TODO - RE-IMPLEMENT FOOD?
 		
-		foodCounter++;
+		// foodCounter++;  //REMOVED TO STOP STARVING TO DEATH EVENT
 		
 		if (hasHorse && foodCounter >= 5 || !hasHorse && foodCounter > 3) {
 			if (PlayerProfile.food > 0)

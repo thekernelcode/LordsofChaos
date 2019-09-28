@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour {
 		levelQuad.transform.localScale = new Vector3(0.8f, 0.8f, 1);
 		
 		//animation
-		GetComponent<Animation>()["Default Take"].speed = Random.Range(0.75f, 1.25f);
+		// GetComponent<Animation>()["Default Take"].speed = Random.Range(0.75f, 1.25f);  //REMOVED ANIMATION FOR NOW
 		
 		//boss
 		if (level == 10)

@@ -98,7 +98,7 @@ MonoBehaviour:
   holding: 0
   collectable: 0
   visible: 0
-  myTransform: {fileID: 0}
+  myTransform: {fileID: 400000}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 0
