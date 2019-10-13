@@ -70,37 +70,37 @@ public class GameLogic : MonoBehaviour {
 	public GameObject rippleObject;				//For weather
 	public GameObject splashObject;				//For weather
 	public Camera GUICamera;					//GUI camera
-	public AudioClip[] fightSounds;				//Array of fight sounds
-	public AudioClip[] lightningSounds;			//For weather
-	public AudioClip shopSound;					//Purchase sound
-	public AudioClip itemSound;					//Item sound
-	public AudioClip horseSound;				//Horse sound
-	public AudioClip mapSound;					//Map and spell sound
-	public AudioClip foodSound;					//Eat sound
-	public AudioClip potionSound;				//Drink sound
-	public AudioClip noSound;					//No sound
-	public AudioClip moveSound;					//Move sound
-	public AudioClip equipSound;				//Equip belt sound
-	public AudioClip fireSound;					//Fire spell sound
-	public AudioClip cheerSound;				//Won game sound
-	public AudioClip menuSound;					//Menu button sound
-	public AudioClip missedSound;				//Missed combat sound
-	public AudioClip chestSound;				//Open chest sound
-	public AudioClip discardSound;				//Discard item sound
-	public AudioClip sickSound;					//Ate poison sound
-	public AudioClip fishSound;					//Fishing sound
-	public AudioClip spellPowerSound;			//Power spell sound
-	public AudioClip spellHealSound;			//Healing spell sound
-	public AudioClip spellCureSound;			//Cure spell sound
-	public AudioClip goldSound;					//Gold sound
-	public AudioClip phoenixSound;				//Death protect
-	public AudioClip snoreSound;				//Snore sound
-	public AudioClip deathSound;				//Death of player sound
-	public AudioClip backToLifeSound;			//Death protect
-	public AudioClip levelUpSound;				//Level up
-	public AudioClip learnSound;				//Learn a spell
-	public AudioClip prepSound;					//Cast fireball
-	public AudioClip uncoverSound;				//For boss
+	//public AudioClip[] fightSounds;				//Array of fight sounds
+	//public AudioClip[] lightningSounds;			//For weather
+	//public AudioClip shopSound;					//Purchase sound
+	//public AudioClip itemSound;					//Item sound
+	//public AudioClip horseSound;				//Horse sound
+	//public AudioClip mapSound;					//Map and spell sound
+	//public AudioClip foodSound;					//Eat sound
+	//public AudioClip potionSound;				//Drink sound
+	//public AudioClip noSound;					//No sound
+	//public AudioClip moveSound;					//Move sound
+	//public AudioClip equipSound;				//Equip belt sound
+	//public AudioClip fireSound;					//Fire spell sound
+	//public AudioClip cheerSound;				//Won game sound
+	//public AudioClip menuSound;					//Menu button sound
+	//public AudioClip missedSound;				//Missed combat sound
+	//public AudioClip chestSound;				//Open chest sound
+	//public AudioClip discardSound;				//Discard item sound
+	//public AudioClip sickSound;					//Ate poison sound
+	//public AudioClip fishSound;					//Fishing sound
+	//public AudioClip spellPowerSound;			//Power spell sound
+	//public AudioClip spellHealSound;			//Healing spell sound
+	//public AudioClip spellCureSound;			//Cure spell sound
+	//public AudioClip goldSound;					//Gold sound
+	//public AudioClip phoenixSound;				//Death protect
+	//public AudioClip snoreSound;				//Snore sound
+	//public AudioClip deathSound;				//Death of player sound
+	//public AudioClip backToLifeSound;			//Death protect
+	//public AudioClip levelUpSound;				//Level up
+	//public AudioClip learnSound;				//Learn a spell
+	//public AudioClip prepSound;					//Cast fireball
+	//public AudioClip uncoverSound;				//For boss
 	public Color dayColour;						//Day
 	public Color nightColour;					//Night
 	public OnOff onOffInventory;				
@@ -276,8 +276,8 @@ public class GameLogic : MonoBehaviour {
 		message02 = "";
 		message03 = "";
 		playersBelt.gameObject.SetActive(false);
-		maxFightSounds = fightSounds.Length;
-		maxLightningSounds = lightningSounds.Length;
+		//maxFightSounds = fightSounds.Length;
+		//maxLightningSounds = lightningSounds.Length;
 		dayTime = 1;
 		drizzle = 0;
 		rainAmbient.SetActive(false);
@@ -1090,7 +1090,7 @@ public class GameLogic : MonoBehaviour {
 			} else {
 				if (!strike) {
 					RenderSettings.ambientLight = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-					GetComponent<AudioSource>().PlayOneShot(lightningSounds[Random.Range(0, maxLightningSounds)]);
+					//GetComponent<AudioSource>().PlayOneShot(lightningSounds[Random.Range(0, maxLightningSounds)]);
 					lightTime = Random.Range(0.1f, 0.5f);
 					strike = true;
 				}
@@ -1162,7 +1162,7 @@ public class GameLogic : MonoBehaviour {
 		//move player
 		if (!playerMoved) {
 			if (!Adjacent(newPlayerX, newPlayerY)) {
-				GetComponent<AudioSource>().PlayOneShot(noSound);
+				//GetComponent<AudioSource>().PlayOneShot(noSound);
 				playerMoved = true;
 				return;
 			}
@@ -1193,7 +1193,7 @@ public class GameLogic : MonoBehaviour {
 							break;
 						case "Wand of Fireball":
 							PlayerHitEnemy(PlayerProfile.magicAttack, false, true);
-							GetComponent<AudioSource>().PlayOneShot(fireSound);
+							//GetComponent<AudioSource>().PlayOneShot(fireSound);
 							break;
 						}
 						DeductItem(usingItemFromSlot);
@@ -1207,7 +1207,7 @@ public class GameLogic : MonoBehaviour {
 						switch(spellbookScript[usingSpellFromSlot].spellName) {
 						case "Fireball":
 							PlayerHitEnemy(PlayerProfile.magicAttack, false, true);
-							GetComponent<AudioSource>().PlayOneShot(fireSound);
+							//GetComponent<AudioSource>().PlayOneShot(fireSound);
 							break;
 						}
 						AdjustBars();
@@ -1302,7 +1302,7 @@ public class GameLogic : MonoBehaviour {
 					randomNumber = Random.Range(5, 11 + randomBias);
 					PlayerProfile.gold += randomNumber;
 					foundText = "Found " + randomNumber + " gold coins!";
-					GetComponent<AudioSource>().PlayOneShot(goldSound);
+					//GetComponent<AudioSource>().PlayOneShot(goldSound);
 					CreateMessage(foundText);						
 					itemScript = tileClicked.GetComponentInChildren<Item>();
 					Destroy(itemScript.gameObject);
@@ -1358,7 +1358,7 @@ public class GameLogic : MonoBehaviour {
 							TakeItem();
 					} else {
 						if (itemsCarried < 4 && !hasBelt || itemsCarried < 6 && hasBelt) {
-							GetComponent<AudioSource>().PlayOneShot(fishSound);
+							//GetComponent<AudioSource>().PlayOneShot(fishSound);
 							ShowItemGUI();
 							ShowPairGUI();
 						} else {
@@ -1368,7 +1368,7 @@ public class GameLogic : MonoBehaviour {
 					}
 					break;
 				default://something else
-					GetComponent<AudioSource>().PlayOneShot(noSound);
+					//GetComponent<AudioSource>().PlayOneShot(noSound);
 					CancelUsed();
 					break;
 				}
@@ -1429,7 +1429,7 @@ public class GameLogic : MonoBehaviour {
 		//deduct health
 		if (enemyScript.evade > Random.Range(0, 11) && !magical) {
 			CreateMessage("You missed!");
-			GetComponent<AudioSource>().PlayOneShot(missedSound);
+			//GetComponent<AudioSource>().PlayOneShot(missedSound);
 		} else {
 			if (magical)
 				damageDealt = (int)Mathf.Ceil(playerAttack * (1.0f - enemyScript.magicalResist));
@@ -1441,9 +1441,9 @@ public class GameLogic : MonoBehaviour {
 			else
 				CreateMessage("You hit " + GenerateName.firstName + " " + GenerateName.lastName + ", dealing " + damageDealt + " damage!");
 			enemyScript.ChangeHealth(-damageDealt);
-			if (!magical)
-				GetComponent<AudioSource>().PlayOneShot(fightSounds[Random.Range(0, maxFightSounds)]);
-		}
+			//if (!magical)
+   //             GetComponent<AudioSource>().PlayOneShot(fightSounds[Random.Range(0, maxFightSounds)]);
+        }
 		
 		DeActivateBoons();
 				
@@ -1468,7 +1468,7 @@ public class GameLogic : MonoBehaviour {
 				//level 10 defeated, game over
 				if (enemyScript.level == 10) {
 					PlayerProfile.IncreaseComplete();
-					GetComponent<AudioSource>().PlayOneShot(cheerSound);
+					//GetComponent<AudioSource>().PlayOneShot(cheerSound);
 					ShowStatsGUI();
 				}
 				//make tombstone
@@ -1537,13 +1537,13 @@ public class GameLogic : MonoBehaviour {
 		//player was killed
 		if (PlayerProfile.health <= 0) {
 			if (deathProtect) {
-				GetComponent<AudioSource>().PlayOneShot(backToLifeSound);
+				//GetComponent<AudioSource>().PlayOneShot(backToLifeSound);
 				PlayerProfile.health = 1;
 				deathProtect = false;
 				CreateMessage("You died and were brought back to life!");
 				PlayerHitEnemy(PlayerProfile.attack, false);
 			} else {
-				GetComponent<AudioSource>().PlayOneShot(deathSound);
+				//GetComponent<AudioSource>().PlayOneShot(deathSound);
 				if (enemyScript.level < 10)
 					CreateMessage("You were killed by the " + enemyScript.enemyName + " (LVL " + enemyScript.level + ")" + "!");
 				else
@@ -1739,9 +1739,9 @@ public class GameLogic : MonoBehaviour {
 			DeductFood();
 		
 		//sound
-		GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
-		GetComponent<AudioSource>().PlayOneShot(moveSound);
-		GetComponent<AudioSource>().pitch = 1.0f;
+		//GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+		//GetComponent<AudioSource>().PlayOneShot(moveSound);
+		//GetComponent<AudioSource>().pitch = 1.0f;
 		
 	}
 
@@ -1843,7 +1843,7 @@ public class GameLogic : MonoBehaviour {
 			if (PlayerProfile.food > 0)
 				PlayerProfile.food--;
 			else {
-				GetComponent<AudioSource>().PlayOneShot(deathSound);
+				//GetComponent<AudioSource>().PlayOneShot(deathSound);
 				PlayerProfile.health = 0;
 				ShowGameOverGUI();
 				CreateTomb(true);
@@ -1996,7 +1996,7 @@ public class GameLogic : MonoBehaviour {
 			CreateMessage("You have bought a " + itemScript.examineName + ".");
 		
 		//sound
-		GetComponent<AudioSource>().PlayOneShot(itemSound);
+		//GetComponent<AudioSource>().PlayOneShot(itemSound);
 		onOffInventory.Open();
 			
 	}
@@ -2132,7 +2132,7 @@ public class GameLogic : MonoBehaviour {
 		//clear tile and update quest journal
 		SetHold(PlayerProfile.currentX, PlayerProfile.currentY, 0);
 		CreateMessage("You learn the spell of " + spellScript.examineName + ".");
-		GetComponent<AudioSource>().PlayOneShot(learnSound);
+		//GetComponent<AudioSource>().PlayOneShot(learnSound);
 		onOffBook.Open();
 		
 	}
@@ -2157,7 +2157,7 @@ public class GameLogic : MonoBehaviour {
 		hasHorse = true;
 		HidePlayer();
 		playerCharHorse.SetActive(true);
-		GetComponent<AudioSource>().PlayOneShot(horseSound);
+		//GetComponent<AudioSource>().PlayOneShot(horseSound);
 		
 	}
 
@@ -2186,7 +2186,7 @@ public class GameLogic : MonoBehaviour {
 			usingSpell = true;
 			switch(spellbookScript[slot].spellName) {
 			case "Fireball" :
-				GetComponent<AudioSource>().PlayOneShot(prepSound);
+				//GetComponent<AudioSource>().PlayOneShot(prepSound);
 				break;
 			case "Full Cure":
 				deathProtect = true;
@@ -2194,12 +2194,12 @@ public class GameLogic : MonoBehaviour {
 				PlayerProfile.food = 20;
 				AdjustBars();
 				usingSpell = false;
-				GetComponent<AudioSource>().PlayOneShot(spellCureSound);
+				//GetComponent<AudioSource>().PlayOneShot(spellCureSound);
 				break;
 			case "Healing":
 				PlayerProfile.health += (int)Mathf.Ceil(PlayerProfile.maxHealth * 0.5f);
 				usingSpell = false;
-				GetComponent<AudioSource>().PlayOneShot(spellHealSound);
+				//GetComponent<AudioSource>().PlayOneShot(spellHealSound);
 				break;
 			case "Power":
 				nextHitFirst = true;
@@ -2207,7 +2207,7 @@ public class GameLogic : MonoBehaviour {
 				nextAttackBonus = PlayerProfile.currentLevel * 3;//extra damage
 				nextAvoidBonus = 5;//avoid 50%
 				usingSpell = false;
-				GetComponent<AudioSource>().PlayOneShot(spellPowerSound);
+				//GetComponent<AudioSource>().PlayOneShot(spellPowerSound);
 				break;
 			}
 			if (usingSpell) {
@@ -2219,7 +2219,7 @@ public class GameLogic : MonoBehaviour {
 			}
 		} else {
 			CreateMessage("Not enough mana to cast the spell of " + spellbookScript[slot].examineName + "!");
-			GetComponent<AudioSource>().PlayOneShot(noSound);
+			//GetComponent<AudioSource>().PlayOneShot(noSound);
 		}
 		
 	}
@@ -2248,7 +2248,7 @@ public class GameLogic : MonoBehaviour {
 
 	public void PlayLevelUp () {
 	
-		GetComponent<AudioSource>().PlayOneShot(levelUpSound);
+		//GetComponent<AudioSource>().PlayOneShot(levelUpSound);
 		
 	}
 
@@ -2291,22 +2291,22 @@ public class GameLogic : MonoBehaviour {
 		switch(inventoryScript[slot].itemName) {
 		case "Small Health Potion":
 			PlayerProfile.health += (int)Mathf.Ceil(PlayerProfile.maxHealth * 0.25f);
-			GetComponent<AudioSource>().PlayOneShot(potionSound);
+			//GetComponent<AudioSource>().PlayOneShot(potionSound);
 			showMessage = 3;
 			break;
 		case "Large Health Potion":
 			PlayerProfile.health = PlayerProfile.maxHealth;
-			GetComponent<AudioSource>().PlayOneShot(potionSound);
+			//GetComponent<AudioSource>().PlayOneShot(potionSound);
 			showMessage = 3;
 			break;
 		case "Small Mana Potion":
 			PlayerProfile.mana += (int)Mathf.Ceil(PlayerProfile.maxMana * 0.25f);
-			GetComponent<AudioSource>().PlayOneShot(potionSound);
+			//GetComponent<AudioSource>().PlayOneShot(potionSound);
 			showMessage = 3;
 			break;
 		case "Large Mana Potion":
 			PlayerProfile.mana = PlayerProfile.maxMana;
-			GetComponent<AudioSource>().PlayOneShot(potionSound);
+			//GetComponent<AudioSource>().PlayOneShot(potionSound);
 			showMessage = 3;
 			break;
 		case "Small Elixer":
@@ -2320,7 +2320,7 @@ public class GameLogic : MonoBehaviour {
 			PlayerProfile.RefreshStats();
 			PlayerProfile.health += (int)Mathf.Ceil(PlayerProfile.maxHealth * 0.25f);
 			PlayerProfile.mana += (int)Mathf.Ceil(PlayerProfile.maxMana * 0.25f);
-			GetComponent<AudioSource>().PlayOneShot(potionSound);
+			//GetComponent<AudioSource>().PlayOneShot(potionSound);
 			showMessage = 3;
 			break;
 		case "Large Elixer":
@@ -2334,7 +2334,7 @@ public class GameLogic : MonoBehaviour {
 			PlayerProfile.RefreshStats();
 			PlayerProfile.health = PlayerProfile.maxHealth;
 			PlayerProfile.mana = PlayerProfile.maxMana;
-			GetComponent<AudioSource>().PlayOneShot(potionSound);
+			//GetComponent<AudioSource>().PlayOneShot(potionSound);
 			showMessage = 3;
 			break;
 		case "Tent":
@@ -2342,33 +2342,33 @@ public class GameLogic : MonoBehaviour {
 			break;
 		case "Throwing Knife":
 			usingItemFromSlot = slot;
-			GetComponent<AudioSource>().PlayOneShot(equipSound);
+			//GetComponent<AudioSource>().PlayOneShot(equipSound);
 			break;
 		case "Wand of Fireball":
 			usingItemFromSlot = slot;
-			GetComponent<AudioSource>().PlayOneShot(prepSound);
+			//GetComponent<AudioSource>().PlayOneShot(prepSound);
 			break;
 		case "Wand of Full Cure":
 			deathProtect = true;
 			PlayerProfile.health = PlayerProfile.maxHealth;
 			PlayerProfile.mana = PlayerProfile.maxMana;
 			PlayerProfile.food = 20;
-			GetComponent<AudioSource>().PlayOneShot(spellCureSound);
+			//GetComponent<AudioSource>().PlayOneShot(spellCureSound);
 			break;
 		case "Wand of Healing":
 			PlayerProfile.health += (int)Mathf.Ceil(PlayerProfile.maxHealth * 0.5f);
-			GetComponent<AudioSource>().PlayOneShot(spellHealSound);
+			//GetComponent<AudioSource>().PlayOneShot(spellHealSound);
 			break;
 		case "Wand of Power":
 			nextHitFirst = true;
 			nextDefenceBonus = 0.5f;//50% less damage
 			nextAttackBonus = PlayerProfile.currentLevel * 3;//extra damage
 			nextAvoidBonus = 5;//avoid 50%
-			GetComponent<AudioSource>().PlayOneShot(spellPowerSound);
+			//GetComponent<AudioSource>().PlayOneShot(spellPowerSound);
 			break;
 		case "Phoenix Plume":
 			deathProtect = true;
-			GetComponent<AudioSource>().PlayOneShot(phoenixSound);
+			//GetComponent<AudioSource>().PlayOneShot(phoenixSound);
 			break;
 		case "Wild Mushroom":
 			PlayerProfile.food += 5;
@@ -2377,7 +2377,7 @@ public class GameLogic : MonoBehaviour {
 			deathProtect = true;
 			nextHitFirst = true;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;
 		case "Weird Fungi":
 			PlayerProfile.food += 5;
@@ -2387,56 +2387,56 @@ public class GameLogic : MonoBehaviour {
 			nextDefenceBonus = 10;
 			nextHitFirst = true;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;
 		case "Hunk of Meat":
 			PlayerProfile.food += 15;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;
 		case "Cheese":
 			PlayerProfile.food += 5;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;
 		case "Loaf of Bread":
 			PlayerProfile.food += 20;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;
 		case "Apple":
 			PlayerProfile.food += 5;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;			
 		case "Map":
 			RevealMap();
-			GetComponent<AudioSource>().PlayOneShot(mapSound);
+			//GetComponent<AudioSource>().PlayOneShot(mapSound);
 			break;
 		case "Boot" : case "Wheel" :
-			GetComponent<AudioSource>().PlayOneShot(discardSound);
+			//GetComponent<AudioSource>().PlayOneShot(discardSound);
 			showMessage = 2;
 			break;
 		case "Black Custard" :
 			PlayerProfile.food = 1;
 			PlayerProfile.health = 1;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(sickSound);
+			//GetComponent<AudioSource>().PlayOneShot(sickSound);
 			break;
 		case "Witches' Brew" :
 			PlayerProfile.food = 1;
 			PlayerProfile.health = 1;
 			showMessage = 3;
-			GetComponent<AudioSource>().PlayOneShot(sickSound);
+			//GetComponent<AudioSource>().PlayOneShot(sickSound);
 			break;
 		case "Penny" :
-			GetComponent<AudioSource>().PlayOneShot(discardSound);
+			//GetComponent<AudioSource>().PlayOneShot(discardSound);
 			showMessage = 2;
 			break;
 		case "Fish" :
 			PlayerProfile.food += 20;
 			showMessage = 1;
-			GetComponent<AudioSource>().PlayOneShot(foodSound);
+			//GetComponent<AudioSource>().PlayOneShot(foodSound);
 			break;
 		}
 
@@ -2538,7 +2538,7 @@ public class GameLogic : MonoBehaviour {
 		sleepInCastle = inCastle;
 		
 		//sound
-		GetComponent<AudioSource>().PlayOneShot(snoreSound);
+		//GetComponent<AudioSource>().PlayOneShot(snoreSound);
 		
 	}
 
@@ -2851,7 +2851,7 @@ public class GameLogic : MonoBehaviour {
 						showingGUI = 5;
 					} else
 						HideAllGUI();
-					GetComponent<AudioSource>().PlayOneShot(menuSound);
+					//GetComponent<AudioSource>().PlayOneShot(menuSound);
 					isFishing = false;
 				}
 			} else
@@ -2873,7 +2873,7 @@ public class GameLogic : MonoBehaviour {
 				HideAllGUI();
 				showingGUI = 6;
 				ShowExamineGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 			}
 			if (pairClicked == 2)
 				AdvanceTime(true);
@@ -2882,24 +2882,24 @@ public class GameLogic : MonoBehaviour {
 				itemScript = shopItems[shopClicked];
 				CheckItemsCarried();
 				if (itemScript.name == "Belt" && hasBelt) {
-					GetComponent<AudioSource>().PlayOneShot(noSound);
+					//GetComponent<AudioSource>().PlayOneShot(noSound);
 					shopClicked = -1;
 					return;
 				}
 				if (itemScript.name == "Horse" && hasHorse) {
-					GetComponent<AudioSource>().PlayOneShot(noSound);
+					//GetComponent<AudioSource>().PlayOneShot(noSound);
 					shopClicked = -1;
 					return;
 				}
 				if (itemsCarried < 4 && !hasBelt || itemsCarried < 6 && hasBelt || shopClicked == 3 || shopClicked == 5) {
 					if (PlayerProfile.gold >= itemScript.cost) {
-						GetComponent<AudioSource>().PlayOneShot(shopSound);
+						//GetComponent<AudioSource>().PlayOneShot(shopSound);
 						PlayerProfile.gold -= itemScript.cost;
 						TakeItem(true);
-					} else
-						GetComponent<AudioSource>().PlayOneShot(noSound);
-				} else
-					GetComponent<AudioSource>().PlayOneShot(noSound);
+					} /*else*/
+						//GetComponent<AudioSource>().PlayOneShot(noSound);
+				} /*else*/
+				//	GetComponent<AudioSource>().PlayOneShot(noSound);
 			}
 			shopClicked = -1;
 			break;
@@ -2914,7 +2914,7 @@ public class GameLogic : MonoBehaviour {
 					ShowExamineGUI();
 					HideBigGUI();
 					showingGUI = 7;
-					GetComponent<AudioSource>().PlayOneShot(menuSound);
+					//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				}
 			} else
 				DrawText("Your spellbook is full", 255);
@@ -2925,14 +2925,14 @@ public class GameLogic : MonoBehaviour {
 				DrawText(chestScript.chestDescriptionClose, 105, false, 4, -80);
 				pairClicked = DrawPair("Open", "Leave", 255);
 				if (pairClicked == 1) {
-					GetComponent<AudioSource>().PlayOneShot(chestSound);
+					//GetComponent<AudioSource>().PlayOneShot(chestSound);
 					ProcessEvent();
 				}
 				if (pairClicked == 2) {
 					ShowExamineGUI();
 					HideBigGUI();
 					showingGUI = 8;
-					GetComponent<AudioSource>().PlayOneShot(menuSound);
+					//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				}
 			} else {
 				DrawText(chestScript.chestDescriptionOpen, 105, false, 4, -80);
@@ -2940,14 +2940,14 @@ public class GameLogic : MonoBehaviour {
 					HideAllGUI();
 					showingGUI = 8;
 					ShowExamineGUI();
-					GetComponent<AudioSource>().PlayOneShot(menuSound);
+					//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				}
 			}
 			break;
 		case 5://examine item
 			if (DrawText("Examine item", 255, true)) {
 				ShowItemGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				if (itemsCarried < 4 && !hasBelt || itemsCarried < 6 && hasBelt)
 					ShowPairGUI();
 				else
@@ -2957,13 +2957,13 @@ public class GameLogic : MonoBehaviour {
 		case 6://enter castle
 			if (DrawText("Enter castle", 255, true)) {
 				ShowShopGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 			}
 			break;
 		case 7://examine book/paper/scroll
 			if (DrawText("Examine spell", 255, true)) {
 				ShowSpellGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				if (spellsCarried < 4)
 					ShowPairGUI();
 				else
@@ -2973,7 +2973,7 @@ public class GameLogic : MonoBehaviour {
 		case 8://examine chest
 			if (DrawText("Examine chest", 255, true)) {
 				ShowChestGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 			}
 			break;
 		case 9://event
@@ -2983,7 +2983,7 @@ public class GameLogic : MonoBehaviour {
 				HideAllGUI();
 				showingGUI = 8;
 				ShowExamineGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 			}
 			break;
 		case 10://died
@@ -3006,7 +3006,7 @@ public class GameLogic : MonoBehaviour {
 				fadeGUI.SetActive(true);
 				itemGUI.SetActive(true);
 				pairGUI.SetActive(true);
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 			}
 			break;
 		case 12://robbed
@@ -3014,7 +3014,7 @@ public class GameLogic : MonoBehaviour {
 			DrawText("You awaken to discover your things ransacked. All of your gold has been stolen!", 105, false, 4, -80);
 			if (DrawText("Continue", 255, true)) {
 				HideAllGUI();
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 			}
 			break;
 		case 13://collectable item
@@ -3035,14 +3035,14 @@ public class GameLogic : MonoBehaviour {
 			if (CameraControl.loadLevel)
 				return;
 			if (pairClicked == 1) {
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				CameraControl.wait = 3.0f;
 				CameraControl.loadLevel = true;
 				CameraControl.replayGame = true;
 			}
 			if (pairClicked == 2) {
 				CameraControl.wait = 3.0f;
-				GetComponent<AudioSource>().PlayOneShot(menuSound);
+				//GetComponent<AudioSource>().PlayOneShot(menuSound);
 				CameraControl.loadLevel = true;
 				CameraControl.goingToTitle = true;
 			}			

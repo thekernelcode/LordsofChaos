@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour {
 			exposed += Time.deltaTime;
 		else {
 			if (!soundPlayed) {
-				mainScript.GetComponent<AudioSource>().PlayOneShot(mainScript.uncoverSound);
+				//mainScript.GetComponent<AudioSource>().PlayOneShot(mainScript.uncoverSound);
 				soundPlayed = true;
 			}
 		}
